@@ -1,0 +1,13 @@
+- name: Display a message with cowsay
+  hosts: linux
+  become: true
+  tasks:
+    - name: Install cowsay
+      package:
+        name: cowsay
+        state: present
+    - name: Add message to /etc/profile
+      lineinfile:
+        dest: /etc/profile
+        line: 'cowsay "Hello from Mati and Abhi!"'
+        state: present
