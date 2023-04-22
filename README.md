@@ -22,7 +22,7 @@
 
 #VM-Ansible2 and VM-Ansible3 are in public subnet 3 and 4 (webservers are yet to be configured and will be deployed using dynamic ansible playbook)
 
-#copy ssh key to bastion vm at public subnet 2 from cloud
+#copy ssh key to bastion vm at public subnet 2 from cloud (Make sure you change the permission of keys as required using chmod command, this might be necessary because we uploaded the key to public repository)
 
 #test ssh to all VMs in public subnet using the copied ssh key (Can go to the directory ssh key was copied and establish connection from there)
 
