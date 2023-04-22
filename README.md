@@ -2,11 +2,11 @@
 
 #Create a C9 environment in your aws console.
 
-#Create S3 bucket in the aws console named group19 (or can change the s3 variables in config.tf and main.tf where necessary)
+#Create S3 bucket in the aws console named group19proj (or can change the s3 variables in config.tf and main.tf where necessary)
 
 #if you want to use your own s3 bucket you should check all config files and main.tf files as well as install_webserver
 
-#you can upload image jpeg image with name group19matiABHI.jpeg to demonstrate the image file loaded from s3. (sudo aws s3 cp s3://group19/group19matiABHI.jpeg  /var/www/html/image is used in install_webserver.sh)
+#you can upload image jpeg image with name group19matiABHI.jpeg to demonstrate the image file loaded from s3. (sudo aws s3 cp s3://group19proj/group19matiABHI.jpeg  /var/www/html/image is used in install_webserver.sh)
 
 #initialize git on your environment
 
@@ -49,4 +49,4 @@
   
 #Now test the webserver in public subnet 3 and 4
   
-  
+ #Finish Remember to destroy all the resources
