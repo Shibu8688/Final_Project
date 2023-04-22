@@ -60,3 +60,8 @@ variable "instance_profile_name" {
   type = string
   description = "IAM Role"
 }
+
+variable "instance_count" {
+  description = "Number of instances to create"
+  default     = 2
+}

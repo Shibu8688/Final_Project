@@ -25,7 +25,7 @@ locals {
 # Instance configuration 
 resource "aws_instance" "ec2_instance" {
   security_groups             = var.security_group_id
-  count                       = length(var.public_subnets)
+  count                       = var.instance_count
   key_name                    = var.key_name
   ami                         = var.ami_id
   subnet_id                   = var.public_subnets[count.index]

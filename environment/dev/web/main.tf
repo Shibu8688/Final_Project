@@ -12,7 +12,9 @@ data "terraform_remote_state" "network" { // This is to use Outputs from Remote 
 module "global_variable" {
   source = "../../../modules/globalvars"
 }
-
+data "aws_availability_zones" "available" {
+  state = "available"
+}
 #configuring variables for 
 # Defining the tags  and variables locally using the modules
 locals {
@@ -126,3 +128,34 @@ module "ec2_instance" {
 #  subnet            = local.private_subnet_ids[count.index]
   
 }
+# Creation of EC2_Intance_Private_Subnet
+resource "aws_instance" "remote_ansible" {
+  count                       = length(local.private_subnet_ids)
+  ami                         = data.aws_ami.latest_amazon_linux.id
+  instance_type               = lookup(var.instance_type, var.env)
+  key_name                    = aws_key_pair.master_key.key_name
+  subnet_id                   = local.public_subnet_ids[count.index + 2]
+  security_groups             = module.security_group_EC2.Ec2_SG
+  associate_public_ip_address = true
+  ebs_optimized               = true
+  monitoring                  = true
+  
+  metadata_options {
+    http_endpoint = "enabled"
+    http_tokens   = "required"
+  }
+  root_block_device {
+    encrypted = true
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+  iam_instance_profile = var.iam_instance_profile_name
+  tags = merge(local.default_tags,
+    {
+      "Name" = "${local.name_prefix}-VM-Ansible${count.index + 2}"
+       Owner =  "Ansible"
+    }
+  )
+  }
