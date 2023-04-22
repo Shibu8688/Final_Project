@@ -3,13 +3,13 @@ output "default_tags" {
   value = {
     "Owner" = "Matiram"
     "App"   = "Web"
-    "StudentId"= "138394226"
+    "StudentIds"= "138394226"
   }
 }
 
 # Prefix to identify the Group For the Project
 output "prefix" {
-  value     = "Assignment1"
+  value     = "Final-Project"
 }
 
 #output of public ip
