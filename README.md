@@ -39,10 +39,8 @@
   enable_plugins = aws_ec2
 
   [defaults]
-  #some basic default values...
-  inventory      = <path to>/Final_Project/ansible/aws_ec2.yaml
-  ansible_user = ec2-user
-  ansible_ssh_private_key_file = <path to>/Final_Project/ansible/ssh_key_dev
+  remote_user = ec2-user
+  private_key_file = /home/ec2-user/environment/Final_Project/ansible/ssh_key_dev
   
 #Use ansible commands
   ansible-inventory -i aws_ec2.yaml --graph
