@@ -50,3 +50,4 @@
 #Now test the webserver in public subnet 3 and 4
   
  #Finish Remember to destroy all the resources
+ #thank you
