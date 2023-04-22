@@ -1,0 +1,17 @@
+---
+- hosts: tag_Ansible
+  become: true
+  tasks:
+    - name: Install Apache HTTP Server
+      yum:
+        name: httpd
+        state: present
+
+    - name: Copy user data script
+      copy:
+        src:  install_webserver.sh
+        dest: /tmp/install_webserver.sh
+        mode: '0755'
+
+    - name: Run user data script
+      shell: /tmp/install_webserver.sh
